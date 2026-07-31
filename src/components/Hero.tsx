@@ -1,13 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import ColorfulTitle from "./ColorfulTitle";
 import FloatingFigures from "./FloatingFigures";
 import WhatsAppButton from "./WhatsAppButton";
+import { asset } from "@/lib/paths";
 
 export default function Hero() {
   return (
     <header className="relative min-h-[100svh] overflow-hidden">
       <Image
-        src="/images/galeria-grupo.png"
+        src={asset("/images/galeria-grupo.png")}
         alt="Niños disfrutando el Vacacional de Colores"
         fill
         priority
@@ -45,9 +47,9 @@ export default function Hero() {
           <a href="#torneos" className="rounded-full px-4 py-1.5 hover:bg-[#e91e8c] hover:text-white">
             Torneos
           </a>
-          <a href="/tree" className="rounded-full px-4 py-1.5 hover:bg-[#e91e8c] hover:text-white">
+          <Link href="/tree" className="rounded-full px-4 py-1.5 hover:bg-[#e91e8c] hover:text-white">
             Links
-          </a>
+          </Link>
         </div>
       </nav>
 

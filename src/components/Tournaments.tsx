@@ -1,3 +1,5 @@
+import { asset } from "@/lib/paths";
+
 export default function Tournaments() {
   return (
     <section id="torneos" className="relative overflow-hidden px-4 py-16 md:py-24">
@@ -48,7 +50,7 @@ export default function Tournaments() {
               playsInline
               preload="metadata"
             >
-              <source src="/videos/buenaVista.mp4" type="video/mp4" />
+              <source src={asset("/videos/buenaVista.mp4")} type="video/mp4" />
               Tu navegador no soporta video HTML5.
             </video>
           </div>

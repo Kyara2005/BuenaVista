@@ -1,3 +1,5 @@
+import { asset } from "@/lib/paths";
+
 export type VacacionalLocation = {
   slug: "QuitoTenis" | "puembo";
   name: string;
@@ -21,7 +23,7 @@ export const VACACIONALES: Record<"QuitoTenis" | "puembo", VacacionalLocation> =
     slug: "QuitoTenis",
     name: "Vacacional de Colores",
     subtitle: "Buena Vista Club de Tenis · Quito",
-    flyer: "/images/flyer-club.png",
+    flyer: asset("/images/flyer-club.png"),
     whatsapp: "593958689486",
     whatsappDisplay: "095 868 9486",
     dates: "Del 22 de junio al 28 de agosto",
@@ -52,7 +54,7 @@ export const VACACIONALES: Record<"QuitoTenis" | "puembo", VacacionalLocation> =
     slug: "puembo",
     name: "Vacacional de Colores",
     subtitle: "¡En Puembo! · Plaza San Marcos",
-    flyer: "/images/flyer-puembo.png",
+    flyer: asset("/images/flyer-puembo.png"),
     whatsapp: "593984571491",
     whatsappDisplay: "098 457 1491",
     dates: "Del 22 de junio al 31 de julio",

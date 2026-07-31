@@ -1,19 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/paths";
 
 const CARDS = [
   {
     href: "/vacacional/QuitoTenis",
     title: "Quito Tenis",
     subtitle: "Buena Vista Club de Tenis",
-    image: "/images/flyer-club.png",
+    image: asset("/images/flyer-club.png"),
     accent: "#e91e8c",
   },
   {
     href: "/vacacional/puembo",
     title: "Puembo",
     subtitle: "Plaza San Marcos",
-    image: "/images/flyer-puembo.png",
+    image: asset("/images/flyer-puembo.png"),
     accent: "#1e8fd6",
   },
 ];

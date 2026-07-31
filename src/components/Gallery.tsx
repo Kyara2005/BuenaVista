@@ -1,28 +1,29 @@
 import Image from "next/image";
+import { asset } from "@/lib/paths";
 
 const GALLERY = [
   {
-    src: "/images/galeria-vacacional-grupo.png",
+    src: asset("/images/galeria-vacacional-grupo.png"),
     alt: "Niños e instructores del vacacional en el césped del club",
   },
   {
-    src: "/images/galeria-copa-mundo.png",
+    src: asset("/images/galeria-copa-mundo.png"),
     alt: "Socios celebrando la final de la Copa del Mundo en Club Buena Vista",
   },
   {
-    src: "/images/galeria-natacion.png",
+    src: asset("/images/galeria-natacion.png"),
     alt: "Niña disfrutando natación en el club",
   },
   {
-    src: "/images/galeria-tenis.png",
+    src: asset("/images/galeria-tenis.png"),
     alt: "Campeona de tenis categoría 12 años",
   },
   {
-    src: "/images/galeria-fiestas.png",
+    src: asset("/images/galeria-fiestas.png"),
     alt: "Celebración y ambiente familiar en Buena Vista",
   },
   {
-    src: "/images/galeria-torneo.png",
+    src: asset("/images/galeria-torneo.png"),
     alt: "Torneo de tenis en Club Buena Vista",
   },
 ];
