@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -9,9 +10,9 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Vacacional de Colores 2026 | Buena Vista Club de Tenis",
+  title: "Buena Vista Club de Tenis | Deporte, bienestar y comunidad",
   description:
-    "Vacacional infantil del 22 de junio al 28 de agosto. +16 actividades, kit de bienvenida y ciclos de 2 semanas. Reserva por WhatsApp 095 868 9486.",
+    "Más de 40 años construyendo deporte, bienestar y comunidad. Tenis, vacacionales, torneos y vida social en Club Buena Vista.",
 };
 
 export default function RootLayout({
@@ -20,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${raleway.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-raleway)]">
-        {children}
+    <html lang="es" className={`${raleway.variable} ${raleway.className} h-full`}>
+      <body className={`${raleway.className} min-h-full antialiased text-gray-dark`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

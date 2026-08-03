@@ -1,106 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import TreeClient from "./TreeClient";
 
 export const metadata: Metadata = {
   title: "Enlaces | Buena Vista Club de Tenis",
   description: "WhatsApp e Instagram de Buena Vista Club de Tenis",
 };
 
-const LINKS = [
-  {
-    href: "https://wa.me/593998021719",
-    label: "WhatsApp",
-    detail: "+593 99 802 1719",
-    color: "#25D366",
-    icon: (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 6.165L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
-    ),
-  },
-  {
-    href: "https://www.instagram.com/clubdetenisbuenavista?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-    label: "Instagram",
-    detail: "@clubdetenisbuenavista",
-    color: "#E1306C",
-    icon: (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-      </svg>
-    ),
-  },
-  {
-    href: "/",
-    label: "Sitio web",
-    detail: "Vacacional de Colores 2026",
-    color: "#1a2b6b",
-    icon: (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
-      </svg>
-    ),
-  },
-  {
-    href: "/#vacacional",
-    label: "Vacacional",
-    detail: "Quito Tenis y Puembo",
-    color: "#e91e8c",
-    icon: (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6z" />
-      </svg>
-    ),
-  },
-];
-
 export default function TreePage() {
-  return (
-    <main className="relative flex min-h-screen flex-col items-center px-4 py-12">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#4eb8f5] via-[#ffe14a]/50 to-[#e91e8c]/40" />
-      <div className="relative z-10 w-full max-w-md">
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white text-3xl shadow-lg ring-4 ring-white/60">
-            🎾
-          </div>
-          <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[#1a2b6b]">
-            Buena Vista Club de Tenis
-          </h1>
-          <p className="mt-1 text-sm text-[#1a2b6b]/75">Todos nuestros enlaces</p>
-        </div>
-
-        <ul className="flex flex-col gap-3">
-          {LINKS.map((link) => (
-            <li key={link.href + link.label}>
-              <a
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-4 rounded-2xl bg-white/95 px-5 py-4 shadow-md ring-1 ring-[#1a2b6b]/8 transition hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                <span
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
-                  style={{ backgroundColor: link.color }}
-                >
-                  {link.icon}
-                </span>
-                <span className="min-w-0 flex-1 text-left">
-                  <span className="block font-[family-name:var(--font-display)] font-bold text-[#1a2b6b]">
-                    {link.label}
-                  </span>
-                  <span className="block truncate text-sm text-[#1a2b6b]/65">{link.detail}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-10 text-center text-xs text-[#1a2b6b]/50">
-          <Link href="/" className="hover:underline">
-            cbuenavista.com
-          </Link>
-        </p>
-      </div>
-    </main>
-  );
+  return <TreeClient />;
 }
