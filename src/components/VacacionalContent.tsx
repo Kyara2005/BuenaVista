@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { VACACIONAL_META, type VacacionalSlug } from "@/data/vacacionales";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { sectionHref } from "@/lib/paths";
 
 export default function VacacionalContent({ sede }: { sede: VacacionalSlug }) {
   const { t } = useLanguage();
@@ -21,12 +21,12 @@ export default function VacacionalContent({ sede }: { sede: VacacionalSlug }) {
       <SiteHeader />
       <main className="min-h-screen bg-white pt-24">
         <div className="mx-auto max-w-6xl px-4 py-12 md:py-20">
-          <Link
-            href="/#experiencias"
+          <a
+            href={sectionHref("experiencias", false)}
             className="mb-10 inline-flex text-sm font-medium tracking-wide text-gray-muted hover:text-gold"
           >
             {t.vacacional.back}
-          </Link>
+          </a>
 
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden bg-gray-light">

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { asset } from "@/lib/paths";
+import { asset, sectionHref, withBase } from "@/lib/paths";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import SiteHeader from "@/components/SiteHeader";
 
@@ -14,21 +14,25 @@ export default function TreeClient() {
       href: "https://wa.me/593998021719",
       label: "WhatsApp",
       detail: "+593 99 802 1719",
+      external: true,
     },
     {
       href: "https://www.instagram.com/clubdetenisbuenavista?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
       label: "Instagram",
       detail: "@clubdetenisbuenavista",
+      external: true,
     },
     {
-      href: "/",
+      href: withBase("/"),
       label: t.tree.site,
       detail: t.tree.title,
+      external: false,
     },
     {
-      href: "/#experiencias",
+      href: sectionHref("experiencias", false),
       label: t.tree.vacacional,
       detail: t.tree.vacDetail,
+      external: false,
     },
   ];
 
@@ -55,8 +59,8 @@ export default function TreeClient() {
               <li key={link.href + link.label}>
                 <a
                   href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
                   className="card-lift flex items-center gap-4 bg-white px-5 py-4"
                 >
                   <span className="min-w-0 flex-1 text-left">

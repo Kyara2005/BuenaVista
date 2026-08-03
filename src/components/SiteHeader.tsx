@@ -4,25 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { asset } from "@/lib/paths";
+import { asset, sectionHref } from "@/lib/paths";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Lang } from "@/i18n/dictionary";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const { lang, setLang, t } = useLanguage();
-  const isHome = pathname === "/" || pathname === "";
+  const isHome =
+    pathname === "/" ||
+    pathname === "" ||
+    pathname === "/index.html" ||
+    pathname === "/index";
   const [scrolled, setScrolled] = useState(!isHome);
   const [open, setOpen] = useState(false);
   const solid = !isHome || scrolled || open;
 
   const links = [
-    { href: "/#historia", label: t.nav.history },
-    { href: "/#valores", label: t.nav.values },
-    { href: "/#instalaciones", label: t.nav.facilities },
-    { href: "/#experiencias", label: t.nav.experiences },
-    { href: "/#eventos", label: t.nav.events },
-    { href: "/#contacto", label: t.nav.contact },
+    { id: "historia", label: t.nav.history },
+    { id: "valores", label: t.nav.values },
+    { id: "instalaciones", label: t.nav.facilities },
+    { id: "experiencias", label: t.nav.experiences },
+    { id: "eventos", label: t.nav.events },
+    { id: "contacto", label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -35,6 +39,30 @@ export default function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
+
+  // Al llegar con /#seccion (p. ej. desde móvil en GH Pages), hacer scroll
+  useEffect(() => {
+    if (!isHome) return;
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    const t = window.setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [isHome, pathname]);
+
+  const goToSection = (id: string) => {
+    setOpen(false);
+    if (isHome) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", `#${id}`);
+        return;
+      }
+    }
+    window.location.assign(sectionHref(id, false));
+  };
 
   const langBtn = (code: Lang, solidNav: boolean) => {
     const active = lang === code;
@@ -88,18 +116,19 @@ export default function SiteHeader() {
 
         <nav className="hidden items-center gap-6 lg:flex">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <button
+              key={link.id}
+              type="button"
+              onClick={() => goToSection(link.id)}
               className={`text-sm font-medium tracking-wide transition hover:text-gold ${
                 solid ? "text-gray-dark/80" : "text-white/90"
               }`}
             >
               {link.label}
-            </a>
+            </button>
           ))}
           <Link
-            href="/tree"
+            href="/tree/"
             className={`text-sm font-medium tracking-wide transition hover:text-gold ${
               solid ? "text-gray-dark/80" : "text-white/90"
             }`}
@@ -139,21 +168,25 @@ export default function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-green/10 bg-white px-4 py-6 lg:hidden">
-          <ul className="flex flex-col gap-4">
+        <div className="max-h-[70vh] overflow-y-auto border-t border-green/10 bg-white px-4 py-6 lg:hidden">
+          <ul className="flex flex-col gap-1">
             {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block text-sm font-medium text-gray-dark"
-                  onClick={() => setOpen(false)}
+              <li key={link.id}>
+                <button
+                  type="button"
+                  className="block w-full py-3 text-left text-sm font-medium text-gray-dark"
+                  onClick={() => goToSection(link.id)}
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
             <li>
-              <Link href="/tree" className="block text-sm font-medium text-gray-dark" onClick={() => setOpen(false)}>
+              <Link
+                href="/tree/"
+                className="block py-3 text-sm font-medium text-gray-dark"
+                onClick={() => setOpen(false)}
+              >
                 {t.nav.links}
               </Link>
             </li>

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { asset } from "@/lib/paths";
+import { asset, sectionHref } from "@/lib/paths";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { usePathname } from "next/navigation";
 
 const LINKS = {
   club: "https://wa.me/593998021719",
@@ -13,6 +14,9 @@ const LINKS = {
 
 export default function SiteFooter() {
   const { t } = useLanguage();
+  const pathname = usePathname();
+  const isHome =
+    pathname === "/" || pathname === "" || pathname === "/index.html" || pathname === "/index";
 
   return (
     <footer className="bg-green-deep text-white">
@@ -36,27 +40,27 @@ export default function SiteFooter() {
           </h3>
           <ul className="space-y-3 text-sm text-white/75">
             <li>
-              <a href="/#historia" className="hover:text-gold">
+              <a href={sectionHref("historia", isHome)} className="hover:text-gold">
                 {t.footer.history}
               </a>
             </li>
             <li>
-              <a href="/#instalaciones" className="hover:text-gold">
+              <a href={sectionHref("instalaciones", isHome)} className="hover:text-gold">
                 {t.footer.facilities}
               </a>
             </li>
             <li>
-              <a href="/#experiencias" className="hover:text-gold">
+              <a href={sectionHref("experiencias", isHome)} className="hover:text-gold">
                 {t.footer.experiences}
               </a>
             </li>
             <li>
-              <Link href="/vacacional/QuitoTenis" className="hover:text-gold">
+              <Link href="/vacacional/QuitoTenis/" className="hover:text-gold">
                 {t.footer.vacQuito}
               </Link>
             </li>
             <li>
-              <Link href="/vacacional/puembo" className="hover:text-gold">
+              <Link href="/vacacional/puembo/" className="hover:text-gold">
                 {t.footer.vacPuembo}
               </Link>
             </li>
@@ -96,7 +100,7 @@ export default function SiteFooter() {
               </a>
             </li>
             <li>
-              <Link href="/tree" className="hover:text-gold">
+              <Link href="/tree/" className="hover:text-gold">
                 {t.footer.allLinks}
               </Link>
             </li>

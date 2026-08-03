@@ -231,8 +231,8 @@ export default function ClubSections() {
 
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {[
-              { href: "/vacacional/QuitoTenis", image: "/images/flyer-club.png", ...t.experiences.cards[0] },
-              { href: "/vacacional/puembo", image: "/images/flyer-puembo.png", ...t.experiences.cards[1] },
+              { href: "/vacacional/QuitoTenis/", image: "/images/flyer-club.png", ...t.experiences.cards[0] },
+              { href: "/vacacional/puembo/", image: "/images/flyer-puembo.png", ...t.experiences.cards[1] },
             ].map((card, i) => (
               <Reveal key={card.href} delayMs={i * 120}>
                 <Link href={card.href} className="card-lift group block overflow-hidden bg-gray-light">
@@ -402,7 +402,7 @@ export default function ClubSections() {
                 WhatsApp +593 99 802 1719
               </a>
               <Link
-                href="/tree"
+                href="/tree/"
                 className="inline-flex items-center justify-center border border-white/40 px-6 py-3.5 text-sm font-medium tracking-wide text-white transition hover:border-gold hover:text-gold sm:px-8"
               >
                 {t.contact.links}
