@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { asset, sectionHref } from "@/lib/paths";
+import { sectionHref } from "@/lib/paths";
+import BrandLogo from "@/components/BrandLogo";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { usePathname } from "next/navigation";
 
@@ -22,13 +22,7 @@ export default function SiteFooter() {
     <footer className="bg-green-deep text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 pb-24 sm:gap-12 sm:py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4 lg:py-20">
         <div>
-          <Image
-            src={asset("/images/logo-buena-vista.png")}
-            alt={t.nav.brand}
-            width={72}
-            height={72}
-            className="mb-5 h-16 w-16 rounded-full object-cover ring-1 ring-gold/50"
-          />
+          <BrandLogo size="block" tone="light" className="mb-5" />
           <p className="font-display text-xl font-medium">Buena Vista</p>
           <p className="mt-1 text-sm tracking-wide text-white/60">Club de Tenis</p>
           <p className="mt-5 text-sm leading-relaxed text-white/70">{t.footer.tagline}</p>

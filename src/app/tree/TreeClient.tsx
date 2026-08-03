@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { asset, sectionHref, withBase } from "@/lib/paths";
+import { sectionHref, withBase } from "@/lib/paths";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import SiteHeader from "@/components/SiteHeader";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function TreeClient() {
   const { t } = useLanguage();
@@ -39,18 +39,13 @@ export default function TreeClient() {
   return (
     <>
       <SiteHeader />
-      <main className="flex min-h-screen flex-col items-center bg-gray-light px-4 pb-16 pt-28">
+      <main className="flex min-h-screen flex-col items-center bg-gray-light px-4 pb-20 pt-24 sm:pb-16 sm:pt-28">
         <div className="w-full max-w-md">
-          <div className="mb-10 text-center">
-            <Image
-              src={asset("/images/logo-buena-vista.png")}
-              alt={t.tree.title}
-              width={88}
-              height={88}
-              className="mx-auto mb-5 h-20 w-20 rounded-full object-cover ring-1 ring-gold/40"
-              priority
-            />
-            <h1 className="font-display text-2xl text-green-deep">{t.tree.title}</h1>
+          <div className="mb-8 text-center sm:mb-10">
+            <div className="mb-5 flex justify-center">
+              <BrandLogo size="block" tone="dark" priority />
+            </div>
+            <h1 className="font-display text-xl text-green-deep sm:text-2xl">{t.tree.title}</h1>
             <p className="mt-2 text-sm text-gray-muted">{t.tree.subtitle}</p>
           </div>
 
@@ -61,11 +56,15 @@ export default function TreeClient() {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="card-lift flex items-center gap-4 bg-white px-5 py-4"
+                  className="card-lift flex min-h-[3.5rem] items-center gap-4 bg-white px-4 py-3.5 sm:px-5 sm:py-4"
                 >
                   <span className="min-w-0 flex-1 text-left">
-                    <span className="block font-display text-lg text-green-deep">{link.label}</span>
-                    <span className="block truncate text-sm text-gray-muted">{link.detail}</span>
+                    <span className="block font-display text-base text-green-deep sm:text-lg">
+                      {link.label}
+                    </span>
+                    <span className="block truncate text-xs text-gray-muted sm:text-sm">
+                      {link.detail}
+                    </span>
                   </span>
                 </a>
               </li>

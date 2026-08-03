@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { asset, sectionHref } from "@/lib/paths";
+import { sectionHref } from "@/lib/paths";
+import BrandLogo from "@/components/BrandLogo";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Lang } from "@/i18n/dictionary";
 
@@ -95,16 +95,9 @@ export default function SiteHeader() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 md:px-8">
-        <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <Image
-            src={asset("/images/logo-buena-vista.png")}
-            alt={t.nav.brand}
-            width={52}
-            height={52}
-            className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-gold/40 sm:h-12 sm:w-12 md:h-14 md:w-14"
-            priority
-          />
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5 md:px-8 md:py-3">
+        <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3" onClick={() => setOpen(false)}>
+          <BrandLogo priority tone={solid ? "dark" : "light"} />
           <span
             className={`hidden truncate font-display text-sm font-semibold tracking-wide sm:block md:text-base ${
               solid ? "text-green-deep" : "text-white"
