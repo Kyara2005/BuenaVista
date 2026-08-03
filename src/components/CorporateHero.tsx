@@ -35,7 +35,7 @@ export default function CorporateHero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-green-deep">
+    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-green-deep px-4">
       <div className="absolute inset-0 overflow-hidden">
         <video
           ref={videoRef}
@@ -54,17 +54,17 @@ export default function CorporateHero() {
       </div>
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center text-white">
-        <p className="mb-8 text-xs font-medium uppercase tracking-[0.28em] text-gold">
+      <div className="relative z-10 mx-auto max-w-3xl px-2 py-28 text-center text-white sm:px-6 sm:py-32">
+        <p className="mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-gold sm:mb-8 sm:text-xs sm:tracking-[0.28em]">
           {t.hero.eyebrow}
         </p>
-        <h1 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-medium leading-tight tracking-tight">
+        <h1 className="font-display text-[clamp(1.75rem,7vw,3.75rem)] font-medium leading-tight tracking-tight">
           {t.hero.title}
         </h1>
-        <div className="mt-[60px]">
+        <div className="mt-10 sm:mt-[60px]">
           <a
             href="#historia"
-            className="inline-flex items-center border border-white/50 bg-white/10 px-8 py-3.5 text-sm font-medium tracking-wide text-white backdrop-blur-md transition hover:border-gold hover:bg-gold hover:text-green-deep"
+            className="inline-flex w-full max-w-xs items-center justify-center border border-white/50 bg-white/10 px-6 py-3.5 text-sm font-medium tracking-wide text-white backdrop-blur-md transition hover:border-gold hover:bg-gold hover:text-green-deep sm:w-auto sm:px-8"
           >
             {t.hero.cta}
           </a>

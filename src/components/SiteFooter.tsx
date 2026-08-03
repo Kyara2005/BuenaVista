@@ -16,7 +16,7 @@ export default function SiteFooter() {
 
   return (
     <footer className="bg-green-deep text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4 lg:py-20">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 pb-24 sm:gap-12 sm:py-16 md:grid-cols-2 md:px-8 lg:grid-cols-4 lg:py-20">
         <div>
           <Image
             src={asset("/images/logo-buena-vista.png")}
@@ -104,8 +104,10 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-6">
-        <p className="mx-auto max-w-4xl text-center text-xs leading-relaxed text-white/55">{t.footer.demo}</p>
+      <div className="border-t border-white/10 px-4 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+        <p className="mx-auto max-w-4xl text-center text-[11px] leading-relaxed text-white/55 sm:text-xs">
+          {t.footer.demo}
+        </p>
         <p className="mt-4 text-center text-xs text-white/40">
           © {new Date().getFullYear()} Buena Vista Club de Tenis. {t.footer.rights}
         </p>

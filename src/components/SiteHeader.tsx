@@ -74,7 +74,7 @@ export default function SiteHeader() {
             alt={t.nav.brand}
             width={52}
             height={52}
-            className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-gold/40 md:h-14 md:w-14"
+            className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-gold/40 sm:h-12 sm:w-12 md:h-14 md:w-14"
             priority
           />
           <span

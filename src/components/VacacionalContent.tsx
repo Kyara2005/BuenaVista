@@ -108,7 +108,7 @@ export default function VacacionalContent({ sede }: { sede: VacacionalSlug }) {
                 href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-10 inline-flex bg-green-deep px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition hover:bg-green"
+                className="mt-10 inline-flex w-full items-center justify-center bg-green-deep px-8 py-3.5 text-sm font-semibold tracking-wide text-white transition hover:bg-green sm:w-auto"
               >
                 {t.vacacional.reserve} · {meta.whatsappDisplay}
               </a>
